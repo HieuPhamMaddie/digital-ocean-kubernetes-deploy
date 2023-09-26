@@ -37,9 +37,7 @@ jobs:
             chmod u+x ./kubectl
       - run:
           name: Deploy Code
-          command: |
-            chmod +x ./scripts/ci-deploy.sh
-            ./scripts/ci-deploy.sh
+          command: kubectl get pods
 workflows:
   version: 2
   build-deploy-master:
