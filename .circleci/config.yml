@@ -2,13 +2,15 @@ version: 2.1
 orbs:
   k8s: digitalocean/k8s@0.1.1
   kubernetes: circleci/kubernetes@1.3.0
+  doctl: digitalocean/cli@1.0.0
 jobs:
   build:
     executor: kubernetes/default
     steps:
+      - doctl/install
       - k8s/install
       - doctl/initialize:
-          digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
+          digitalocean-access-token: <<parameters.digitalocean-access-token>>
       - run: |
           doctl kubernetes cluster kubeconfig save do-k8s-practice
       
