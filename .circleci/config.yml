@@ -4,15 +4,26 @@ orbs:
   doctl: digitalocean/cli@0.1.1
 jobs:
   build:
-    executor: k8s/default
+    executor: docker/default
     steps:
+      - checkout
+      - setup_remote_docker
       - doctl/install
+      - run:
+          name: Authenticate with DigitalOcean
+          command: |
+            doctl auth init -t $DIGITALOCEAN_ACCESS_TOKEN
       - k8s/install
-      - doctl/initialize:
-          digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
-      - run: |
-          doctl kubernetes cluster kubeconfig save do-k8s-practice
-      
+      - run:
+          name: Save Kubernetes Config
+          command: |
+            doctl kubernetes cluster kubeconfig save do-k8s-practice
+      - run:
+          name: Your Kubernetes Commands
+          command: |
+            kubectl get pods
+            # Add more Kubernetes commands as needed
+
 workflows:
   version: 2
   build-and-deploy:
