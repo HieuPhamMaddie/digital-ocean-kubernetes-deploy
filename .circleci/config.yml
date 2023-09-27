@@ -10,7 +10,7 @@ jobs:
       - doctl/install
       - k8s/install
       - doctl/initialize:
-          digitalocean-access-token: <<parameters.digitalocean-access-token>>
+          digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
       - run: |
           doctl kubernetes cluster kubeconfig save do-k8s-practice
       
