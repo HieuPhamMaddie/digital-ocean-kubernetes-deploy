@@ -6,7 +6,6 @@ jobs:
   build:
     executor: kubernetes/default
     steps:
-      - doctl/install
       - k8s/install
       - doctl/initialize:
           digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
