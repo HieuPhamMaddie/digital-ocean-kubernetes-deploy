@@ -10,10 +10,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - doctl/install
-      - run:
-          name: Authenticate with DigitalOcean
-          command: |
-            doctl auth init -t $DIGITALOCEAN_ACCESS_TOKEN
       - k8s/install
       - run:
           name: Save Kubernetes Config
