@@ -11,6 +11,8 @@ jobs:
       - setup_remote_docker
       - doctl/install
       - k8s/install
+      - doctl/initialize:
+          digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
       - run:
           name: Save Kubernetes Config
           command: |
