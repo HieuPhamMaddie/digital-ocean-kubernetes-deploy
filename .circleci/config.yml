@@ -5,16 +5,11 @@ orbs:
 jobs:
   build:
     executor: kubernetes/default
-    parameters:
-    digitalocean-access-token:
-      default: DIGITALOCEAN_ACCESS_TOKEN
-      description: The access token to connect DigitalOcean
-      type: env_var_name
     steps:
       - doctl/install
       - k8s/install
       - doctl/initialize:
-          digitalocean-access-token: <<parameters.digitalocean-access-token>>
+          digitalocean-access-token: DIGITALOCEAN_ACCESS_TOKEN
       - run: |
           doctl kubernetes cluster kubeconfig save do-k8s-practice
       
