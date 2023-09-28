@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Save Kubernetes Config
           command: |
-            doctl kubernetes cluster kubeconfig save do-k8s-practice
+            doctl kubernetes cluster kubeconfig save do-k8s-practic
       - run:
           name: Your Kubernetes Commands
           command: |
