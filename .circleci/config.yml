@@ -25,7 +25,8 @@ jobs:
             # Add more Kubernetes commands as needed
       - helm/install_helm_chart:
           add-repo: https://prometheus-community.github.io/helm-charts
-          chart: ./kube-prometheus-stack/kube-prometheus-stack
+          chart: ./kube-prometheus-stack
+          release_name: kube-prometheus-stack
 
 workflows:
   version: 2
