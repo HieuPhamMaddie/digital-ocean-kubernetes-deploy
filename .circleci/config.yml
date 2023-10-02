@@ -24,7 +24,7 @@ jobs:
             kubectl get pods
             # Add more Kubernetes commands as needed
       - helm/install_helm_chart:
-          add-repo: ./kube-prometheus-stack
+          add-repo: ./kube-prometheus-stack/
           chart: kube-prometheus-stack
 
 workflows:
